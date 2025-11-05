@@ -1,0 +1,23 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Gilroy";
+
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+/* Remove arrows from number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}

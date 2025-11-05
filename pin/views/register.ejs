@@ -1,0 +1,21 @@
+<% include partials/header.ejs %>
+
+<div class="w-full h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1987&auto=format&fit=crop');">
+    <div class="w-[400px] min-h-[440px] bg-white/30 backdrop-blur-xl px-10 py-12 rounded-[30px] shadow-2xl border border-white/30">
+        <h1 class="text-3xl mb-10 text-center font-semibold text-zinc-900 tracking-tight capitalize leading-none" style="text-shadow: 2px 2px 4px rgba(255,255,255,0.8);">Create an account</h1>
+        <form action="/register" method="post">
+            <input class="border border-white/40 bg-white/50 rounded-xl block mt-5 w-full px-5 py-4 placeholder:text-gray-600 text-zinc-900" type="text" name="username" placeholder="username">
+            <input class="border border-white/40 bg-white/50 rounded-xl block mt-4 w-full px-5 py-4 placeholder:text-gray-600 text-zinc-900" type="email" name="email" placeholder="email">
+            <input class="border border-white/40 bg-white/50 rounded-xl block mt-4 w-full px-5 py-4 placeholder:text-gray-600 text-zinc-900" type="number" name="contact" placeholder="contact number">
+            <input class="border border-white/40 bg-white/50 rounded-xl block mt-4 w-full px-5 py-4 placeholder:text-gray-600 text-zinc-900" type="password" name="password" placeholder="password">
+            <button type="submit" class="block mt-5 w-full px-4 py-3 bg-red-600 text-white rounded-full font-semibold">Create New Account</button>
+            <p class="text-xs text-zinc-800 mt-6 text-center leading-relaxed px-4" style="text-shadow: 1px 1px 2px rgba(255,255,255,0.6);">By continuing, you agree to Pinterest's <span class="font-semibold">Terms of Service</span> and acknowledge you've read our <span class="font-semibold">Privacy Policy</span>. <span class="font-semibold">Notice at collection</span>.</p>
+        </form>
+       <a class="block mt-4 text-sm font-semibold text-center text-zinc-800 w-full" href="/" style="text-shadow: 1px 1px 2px rgba(255,255,255,0.8);">Already have an account?</a>
+    </div>
+</div>
+
+
+
+<% include partials/footer.ejs %>
+ 
