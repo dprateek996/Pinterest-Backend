@@ -1,30 +1,155 @@
 <% include partials/header.ejs %>
 
-<div class="w-full min-h-screen bg-zinc-100 p-10">
-    <div class="max-w-6xl mx-auto">
-        <div class="flex items-center justify-between mb-10">
-            <h1 class="text-4xl font-bold text-zinc-800">Welcome, <%= currentUser.username %>!</h1>
-            <a href="/logout" class="px-6 py-3 bg-red-600 text-white rounded-full font-semibold hover:bg-red-700">Logout</a>
+<div class="w-full min-h-screen bg-[#2b2b2b] flex flex-col">
+
+    <form id="uploadForm" action="/fileupload" method="POST" enctype="multipart/form-data" hidden>
+        <input type="file" name="image" accept="image/*">
+    </form>
+    <!-- Logout Button - Top Right -->
+    <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50">
+        <a href="/logout" class="px-4 py-2 md:px-6 md:py-2.5 bg-zinc-700 hover:bg-zinc-600 text-white text-sm md:text-base rounded-lg font-medium transition-all">Logout</a>
+    </div>
+
+    <!-- Profile Section - Centered -->
+    <div class="w-full flex-shrink-0 pt-16 md:pt-24 pb-12 md:pb-16 flex items-center justify-center min-h-[60vh]">
+        <div class="px-4 md:px-6">
+            <!-- Profile Header -->
+            <div class="flex flex-col items-center text-center">
+                <!-- Profile Image -->
+                <div class="mb-8 md:mb-10 relative">
+                    <img src="https://i.pinimg.com/1200x/07/c1/ee/07c1eeddc3c2b5a609a775ab2271d4b1.jpg" alt="<%= currentUser.username %>" class="w-32 h-32 md:w-40 md:h-40 lg:w-44 lg:h-44 rounded-full object-cover bg-zinc-700 shadow-xl">
+                    <span  id="uploadicon" class="w-11 h-11 absolute bottom-1 right-1 rounded-full flex items-center justify-center bg-white shadow-lg cursor-pointer hover:bg-zinc-100 transition-all">
+                        <i class="text-zinc-800 ri-pencil-line text-lg"></i>
+                    </span>
+                </div> 
+                
+                <!-- Name -->
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
+                    <%= currentUser.name || 'No Name Set' %>
+                </h1>
+                
+                <!-- Username -->
+                <p class="text-base md:text-lg text-zinc-400 mb-10 font-medium">
+                    @<%= currentUser.username %>
+                </p>
+                
+                <!-- Edit Button -->
+                <a href="/edit" class="px-8 py-2.5 bg-zinc-700 hover:bg-zinc-600 text-white rounded-full text-sm font-semibold mb-8 transition-all shadow-md hover:shadow-lg">
+                    Edit Profile
+                </a>
+                
+                <!-- Add New Post Button -->
+                <button class="px-10 py-3 rounded-full bg-red-600 hover:bg-red-700 text-white text-sm font-semibold transition-all shadow-lg hover:shadow-xl transform hover:scale-105">
+                    Add New Post
+                </button>
+            </div>
         </div>
-        
-        <div class="bg-white rounded-3xl p-8 shadow-lg">
-            <h2 class="text-2xl font-semibold text-zinc-700 mb-6">Profile Information</h2>
-            <div class="space-y-4">
-                <div>
-                    <label class="text-sm font-semibold text-zinc-600">Username</label>
-                    <p class="text-lg text-zinc-800"><%= currentUser.username %></p>
+    </div>
+
+    <!-- All Pins Section -->
+    <div class="w-full flex-grow px-4 md:px-6 lg:px-8 pb-12 md:pb-20">
+        <div class="max-w-7xl mx-auto ml-8 md:ml-12 lg:ml-16">
+            <!-- Pins Grid -->
+            <div class="cards flex flex-wrap gap-10 px-10 mt-10">
+                <!-- Pin Card 1 -->
+                <div class="card">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"><img class="w-full h-full object-cover overflow-hidden" src="https://i.pinimg.com/1200x/ab/e6/97/abe697b7fe0e10e1017a509372d2d272.jpg" alt=""></div>
+
+                    <h3 class="text-xl font-semibold text-white mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium text-zinc-400 opacity-0">28 Pins</h5>
                 </div>
-                <div>
-                    <label class="text-sm font-semibold text-zinc-600">Email</label>
-                    <p class="text-lg text-zinc-800"><%= currentUser.email %></p>
+                
+                <!-- Pin Card 2 -->
+                <div class="card opacity-60 hidden">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
                 </div>
-                <div>
-                    <label class="text-sm font-semibold text-zinc-600">Contact</label>
-                    <p class="text-lg text-zinc-800"><%= currentUser.contact %></p>
+                
+                <!-- Pin Card 3 -->
+                <div class="card opacity-60 hidden">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
+                </div>
+                
+                <!-- Pin Card 4 -->
+                <div class="card opacity-60 hidden">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
+                </div>
+                
+                <!-- Pin Card 5 -->
+                <div class="card opacity-60 hidden">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
+                </div>
+                
+                <!-- Pin Card 6 -->
+                <div class="card opacity-60 hidden">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
+                </div>
+                
+                <!-- Pin Card 7 -->
+                <div class="card opacity-60 hidden">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
+                </div>
+                
+                <!-- Pin Card 8 -->
+                <div class="card opacity-60 hidden">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
+                </div>
+                
+                <!-- Pin Card 9 -->
+                <div class="card opacity-60 hidden">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
+                </div>
+                
+                <!-- Pin Card 10 -->
+                <div class="card opacity-60 hidden">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
+                </div>
+                
+                <!-- Pin Card 11 -->
+                <div class="card opacity-60 hidden">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
+                </div>
+                
+                <!-- Pin Card 12 -->
+                <div class="card opacity-60 hidden">
+                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<script>
+    document.querySelector('#uploadicon').addEventListener('click', function() {
+        document.querySelector('#uploadForm input[type="file"]').click();
+    });
+
+    // Auto-submit form when file is selected
+    document.querySelector('#uploadForm input[type="file"]').addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            document.querySelector('#uploadForm').submit();
+        }
+    });
+</script>
 <% include partials/footer.ejs %>

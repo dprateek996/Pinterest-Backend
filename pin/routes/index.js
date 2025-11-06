@@ -17,6 +17,7 @@ router.get('/profile', isLoggedIn, function(req, res, next) {
 router.post('/register', function(req, res, next) {
   const data = new userModel({
     username: req.body.username,
+    name: req.body.name,
     email: req.body.email,
     contact: req.body.contact
   })
