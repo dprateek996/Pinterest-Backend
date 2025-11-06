@@ -5,9 +5,12 @@
     <form id="uploadForm" action="/fileupload" method="POST" enctype="multipart/form-data" hidden>
         <input type="file" name="image" accept="image/*">
     </form>
+    
     <!-- Logout Button - Top Right -->
     <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50">
-        <a href="/logout" class="px-4 py-2 md:px-6 md:py-2.5 bg-zinc-700 hover:bg-zinc-600 text-white text-sm md:text-base rounded-lg font-medium transition-all">Logout</a>
+        <a href="/logout" class="px-6 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full text-sm font-semibold transition-all">
+            Logout
+        </a>
     </div>
 
     <!-- Profile Section - Centered -->
@@ -18,7 +21,7 @@
                 <!-- Profile Image -->
                 <div class="mb-8 md:mb-10 relative">
                     <img src="https://i.pinimg.com/1200x/07/c1/ee/07c1eeddc3c2b5a609a775ab2271d4b1.jpg" alt="<%= currentUser.username %>" class="w-32 h-32 md:w-40 md:h-40 lg:w-44 lg:h-44 rounded-full object-cover bg-zinc-700 shadow-xl">
-                    <span  id="uploadicon" class="w-11 h-11 absolute bottom-1 right-1 rounded-full flex items-center justify-center bg-white shadow-lg cursor-pointer hover:bg-zinc-100 transition-all">
+                    <span id="uploadicon" class="w-11 h-11 absolute bottom-1 right-1 rounded-full flex items-center justify-center bg-white shadow-lg cursor-pointer hover:bg-zinc-100 transition-all">
                         <i class="text-zinc-800 ri-pencil-line text-lg"></i>
                     </span>
                 </div> 
@@ -53,88 +56,21 @@
             <div class="cards flex flex-wrap gap-10 px-10 mt-10">
                 <!-- Pin Card 1 -->
                 <div class="card">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"><img class="w-full h-full object-cover overflow-hidden" src="https://i.pinimg.com/1200x/ab/e6/97/abe697b7fe0e10e1017a509372d2d272.jpg" alt=""></div>
-
-                    <h3 class="text-xl font-semibold text-white mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium text-zinc-400 opacity-0">28 Pins</h5>
+                    <div class="w-52 h-32 md:h-40 bg-zinc-200 rounded-lg">
+                        <img class="w-full h-full object-cover rounded-lg" src="https://i.pinimg.com/1200x/ab/e6/97/abe697b7fe0e10e1017a509372d2d272.jpg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mt-3 text-white">All Pins</h3>
+                    <h5 class="text-sm font-medium opacity-0 text-zinc-400">28 Pins</h5>
                 </div>
                 
-                <!-- Pin Card 2 -->
-                <div class="card opacity-60 hidden">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
-                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
+                <!-- Remaining cards 2-12 with hidden class -->
+                <% for(let i = 2; i <= 12; i++) { %>
+                <div class="card hidden">
+                    <div class="w-52 h-32 md:h-40 bg-zinc-200 rounded-lg"></div>
+                    <h3 class="text-xl font-semibold mt-3 text-white">Pin Card <%= i %></h3>
+                    <h5 class="text-sm font-medium opacity-0 text-zinc-400">28 Pins</h5>
                 </div>
-                
-                <!-- Pin Card 3 -->
-                <div class="card opacity-60 hidden">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
-                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
-                </div>
-                
-                <!-- Pin Card 4 -->
-                <div class="card opacity-60 hidden">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
-                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
-                </div>
-                
-                <!-- Pin Card 5 -->
-                <div class="card opacity-60 hidden">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
-                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
-                </div>
-                
-                <!-- Pin Card 6 -->
-                <div class="card opacity-60 hidden">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
-                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
-                </div>
-                
-                <!-- Pin Card 7 -->
-                <div class="card opacity-60 hidden">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
-                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
-                </div>
-                
-                <!-- Pin Card 8 -->
-                <div class="card opacity-60 hidden">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
-                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
-                </div>
-                
-                <!-- Pin Card 9 -->
-                <div class="card opacity-60 hidden">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
-                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
-                </div>
-                
-                <!-- Pin Card 10 -->
-                <div class="card opacity-60 hidden">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
-                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
-                </div>
-                
-                <!-- Pin Card 11 -->
-                <div class="card opacity-60 hidden">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
-                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
-                </div>
-                
-                <!-- Pin Card 12 -->
-                <div class="card opacity-60 hidden">
-                    <div class="w-52 h-40 bg-zinc-200 rounded-lg"></div>
-                    <h3 class="text-xl font-semibold mt-3">All Pins</h3>
-                    <h5 class="text-sm font-medium opacity-0">28 Pins</h5>
-                </div>
+                <% } %>
             </div>
         </div>
     </div>
@@ -145,11 +81,11 @@
         document.querySelector('#uploadForm input[type="file"]').click();
     });
 
-    // Auto-submit form when file is selected
     document.querySelector('#uploadForm input[type="file"]').addEventListener('change', function() {
         if (this.files && this.files[0]) {
             document.querySelector('#uploadForm').submit();
         }
     });
 </script>
+
 <% include partials/footer.ejs %>
