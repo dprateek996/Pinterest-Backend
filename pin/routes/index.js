@@ -29,6 +29,16 @@ router.get('/show/posts', isLoggedIn, async function(req, res, next) {
   res.render('show', {currentUser: user, nav: true});
 });
 
+router.get('/feed', isLoggedIn, async function(req, res, next) {
+  try {
+    const posts = await postModel.find().populate('user');
+    res.render('feed', { posts, nav: true });
+  } catch (error) {
+    console.error('Feed error:', error);
+    res.status(500).send('Error loading feed');
+  }
+});
+
 router.get('/show/post/:id', isLoggedIn, async function(req, res, next) {
   const post = await postModel.findById(req.params.id).populate('user');
   res.render('postdetail', {post, nav: true});
